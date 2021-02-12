@@ -4,3 +4,59 @@
 @import "media-queries";
 @import "reset";
 @import "utils";
+
+.container {
+  min-height: 100vh;
+  display: grid;
+  grid:
+    "header" auto
+    "content" 1fr
+    "footer" auto /
+    auto;
+
+  header {
+    grid-area: header;
+    padding: 1.5rem 2rem;
+    background-color: var(--dark);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      color: white;
+    }
+    .header-brand {
+      font-size: 4rem;
+      font-weight: 700;
+    }
+    ul {
+      display: flex;
+      li {
+        .header-nav {
+          font-size: 1.7rem;
+          margin: 0 10px;
+        }
+        .active {
+          font-weight: bold;
+          border-bottom: 1px solid white;
+          padding-bottom: 1px;
+        }
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+  .content {
+    padding: 20px;
+    grid-area: content;
+  }
+  footer {
+    grid-area: footer;
+    font-size: 1.7rem;
+    text-align: center;
+    color: white;
+    background-color: var(--dark-grey);
+    padding: 2rem;
+  }
+}
