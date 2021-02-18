@@ -50,6 +50,7 @@
   .content {
     padding: 20px;
     grid-area: content;
+    background: var(--divider);
   }
   footer {
     grid-area: footer;

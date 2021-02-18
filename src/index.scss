@@ -1,0 +1,50 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .articles-container {
+    max-width: 800px;
+    width: 100%;
+    margin: 6rem 0 10rem 0;
+    .article {
+      box-shadow: var(--box-shadow);
+      background: white;
+      padding: 0 5rem;
+      margin-bottom: 5rem;
+      border-radius: 0.3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        height: 8rem;
+        width: 8rem;
+        border-radius: 50%;
+        margin-top: -4rem;
+        border: 5px solid var(--divider);
+      }
+    }
+    h2 {
+      margin-top: 2rem;
+      margin-bottom: 0;
+    }
+    .article-author {
+      color: var(--hint);
+      margin-bottom: 3rem;
+    }
+    .article-content {
+      max-width: 550px;
+      white-space: pre-line;
+    }
+    .article-actions {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      padding: 2rem 0;
+      border-top: 1px solid var(--divider);
+      margin-top: 2rem;
+      .btn {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
