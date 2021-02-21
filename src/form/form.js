@@ -39,6 +39,7 @@ form.addEventListener("submit", async (event) => {
 });
 
 const formIsValid = (article) => {
+  errors = [];
   if (
     !article.author ||
     !article.img ||
@@ -56,7 +57,6 @@ const formIsValid = (article) => {
       errorHTML += `<li>${e}</li>`;
     });
     errorElement.innerHTML = errorHTML;
-    errors = [];
     return false;
   } else {
     errorElement.innerHTML = "";
