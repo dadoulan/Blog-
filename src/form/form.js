@@ -3,7 +3,12 @@ import "./form.scss";
 
 const form = document.querySelector("form");
 const errorElement = document.querySelector("#errors");
+const btnCancel = document.querySelector(".btn-secondary");
 let errors = [];
+
+btnCancel.addEventListener("click", () => {
+  location.assign("/index.html");
+});
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -21,7 +26,11 @@ form.addEventListener("submit", async (event) => {
           "Content-Type": "application/json",
         },
       });
-      const body = await response.json();
+      if (response.status < 299) {
+        //une requete s'est bien déroulé lorsque status <299
+        // possible aussi de faire avec location href
+        location.assign("/index.html");
+      }
       console.log(body);
     } catch (e) {
       console.error("e : ", e);
