@@ -4,8 +4,38 @@ import "./form.scss";
 const form = document.querySelector("form");
 const errorElement = document.querySelector("#errors");
 const btnCancel = document.querySelector(".btn-secondary");
+let articleId;
 let errors = [];
+// Recuperer donnees pour modification article
 
+const fillForm = (article) => {
+  const author = document.querySelector("input[name='author']");
+  const img = document.querySelector("input[name='img']");
+  const category = document.querySelector("input[name='category']");
+  const title = document.querySelector("input[name='title']");
+  const content = document.querySelector("textarea");
+  author.value = article.author || "";
+  img.value = article.img || "";
+  category.value = article.category || "";
+  title.value = article.title || "";
+  content.value = article.content || "";
+};
+
+const initForm = async () => {
+  const params = new URL(window.location.href);
+  articleId = params.searchParams.get("id");
+  if (articleId) {
+    const response = await fetch(`https://restapi.fr/api/article/${articleId}`);
+    if (response.status < 300) {
+      const article = await response.json();
+      fillForm(article);
+    }
+  }
+};
+
+initForm();
+// Sauvegarde modif : method put(remplace tout) ou patch(remplace seulement quelques champs).
+//
 btnCancel.addEventListener("click", () => {
   location.assign("/index.html");
 });
@@ -16,18 +46,33 @@ form.addEventListener("submit", async (event) => {
   // Creation cle / valeur (iterable)
   const formData = new FormData(form);
   const article = Object.fromEntries(formData.entries());
+  console.log("coucou morray");
   if (formIsValid(article)) {
     try {
       const json = JSON.stringify(article);
-      const response = await fetch("https://restapi.fr/api/article", {
-        method: "POST",
-        body: json,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (response.status < 299) {
-        //une requete s'est bien déroulé lorsque status <299
+      let response;
+      console.log(articleId);
+      console.log("Coucou 123");
+      if (articleId) {
+        response = await fetch(`https://restapi.fr/api/article/${articleId}`, {
+          method: "PATCH",
+          body: json,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      } else {
+        response = await fetch("https://restapi.fr/api/article", {
+          method: "POST",
+          body: json,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+      }
+
+      if (response.status < 300) {
+        //une requete s'est bien déroulé lorsque status < 300
         // possible aussi de faire avec location href
         location.assign("/index.html");
       }
