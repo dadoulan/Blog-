@@ -60,23 +60,25 @@ const createArticles = () => {
 
   deleteButtons.forEach((button) => {
     button.addEventListener("click", async (event) => {
-      openModal("Etes-vous sur de vouloir supprimer votre article ?");
-      // if (result === true) {
-      //   try {
-      //     const target = event.target;
-      //     const articleId = target.dataset.id;
-      //     const response = await fetch(
-      //       `https://restapi.fr/api/article/${articleId}`,
-      //       {
-      //         method: "DELETE",
-      //       }
-      //     );
-      //     const body = await response.json();
-      //     fetchArticle();
-      //   } catch (e) {
-      //     console.log("e : ", e);
-      //   }
-      // }
+      const result = await openModal(
+        "Etes-vous sur de vouloir supprimer votre article ?"
+      );
+      if (result === true) {
+        try {
+          const target = event.target;
+          const articleId = target.dataset.id;
+          const response = await fetch(
+            `https://restapi.fr/api/article/${articleId}`,
+            {
+              method: "DELETE",
+            }
+          );
+          const body = await response.json();
+          fetchArticle();
+        } catch (e) {
+          console.log("e : ", e);
+        }
+      }
     });
   });
 };
