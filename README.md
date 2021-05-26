@@ -1,5 +1,7 @@
 # Blog Javascript
 
+![blog-js](https://github.com/shompoth/Blog/blob/main/src/assets/images/screenshot-JS-Blog.png)
+
 Ce projet est un blog réalisé from scratch en full Javascript.
 
 ## Fonctionnalités
