@@ -9,8 +9,8 @@ Ce projet est un blog réalisé from scratch en full Javascript.
 - L'ajout, la modification ou la suppression d'un article
 - La catégorisation de l'article
 - L'ordre d'affichage des articles (récent/ancien)
-- L'affichage de messages d'erreurs si l'article est mal remplie
-- La barre de navigation responsavive, réalisé uniquement avec du Javascript
+- L'affichage de messages d'erreurs si l'article est mal rempli
+- La barre de navigation responsavive, réalisée uniquement avec du Javascript
 
 ## Crée avec
 
